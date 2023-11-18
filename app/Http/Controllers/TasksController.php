@@ -93,7 +93,7 @@ class TasksController extends Controller
         return view('tasks.edit', [
             'task' => $task,
         ]);
-    }
+    } 
 
     /**
      * Update the specified resource in storage.
