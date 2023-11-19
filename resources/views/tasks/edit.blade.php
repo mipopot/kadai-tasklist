@@ -13,7 +13,7 @@
 
                 <div class="form-control my-4">
                     <label for="title" class="label">
-                        <span class="label-text">タイトル:</span>
+                        <span class="label-text">ステータス:</span>
                     </label>
                     <input type="text" name="title" value="{{ $task->status }}" class="input input-bordered w-full">
                 </div>
