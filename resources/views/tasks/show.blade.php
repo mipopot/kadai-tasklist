@@ -11,7 +11,10 @@
             <th>id</th>
             <td>{{ $task->id }}</td>
         </tr>
-
+        <tr>
+            <th>タイトル</th>
+            <td>{{ $task->title }}</td>
+        </tr>
         <tr>
             <th>タスク</th>
             <td>{{ $task->content }}</td>
