@@ -11,10 +11,10 @@
             @csrf
 
                 <div class="form-control my-4">
-                    <label for="title" class="label">
-                        <span class="label-text">タイトル:</span>
+                    <label for="status" class="label">
+                        <span class="label-text">ステータス:</span>
                     </label>
-                    <input type="text" name="title" class="input input-bordered w-full">
+                    <input type="text" name="status" class="input input-bordered w-full">
                 </div>
                 
                 <div class="form-control my-4">
