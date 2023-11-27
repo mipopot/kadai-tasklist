@@ -17,4 +17,8 @@ module.exports = {
     },
 
     plugins: [require('@tailwindcss/forms')],
+<<<<<<< HEAD
+=======
+    plugins: [require("@tailwindcss/typography"), require("daisyui")], // 追記
+>>>>>>> 50a50a0 (laravel breeze daisyui)
 };
