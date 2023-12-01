@@ -6,7 +6,7 @@
         </div>
 
         <div class="flex-none">
-            <ul tabindex="0" class="menu lg:block lg:menu-horizontal">
+            <ul tabindex="0" class="menu lg:block lg:menu-horizontal flex-none">
                 {{-- タスク作成ページへのリンク --}}
                 <li><a class="link link-hover" href="{{ route('tasks.create') }}">新規タスクの投稿</a></li>
             </ul>
