@@ -35,13 +35,6 @@ class TasksController extends Controller
         // dashboardビューでそれらを表示
         return view('dashboard', $data);
         
-        
-        
-        
-        // タスク一覧を取得
-       // $tasks = Task::all();         // 追加
-//dd($tasks);
-                                      // 追加
     }
 
     /**
