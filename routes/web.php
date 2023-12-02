@@ -16,6 +16,7 @@ use App\Http\Controllers\TasksController;
 */
 
 Route::get('/dashboard', [TasksController::class, 'index']);
+
 //Route::get('/', function () {
 //    return view('welcome');
 //});

@@ -24,6 +24,7 @@ class TasksController extends Controller
             // ユーザの投稿の一覧を作成日時の降順で取得
             // （後のChapterで他ユーザの投稿も取得するように変更しますが、現時点ではこのユーザの投稿のみ取得します）
             $tasks = $user->tasks()->orderBy('created_at', 'desc')->paginate(10);
+            
             $data = [
                 'user' => $user,
                 'tasks' => $tasks,
@@ -69,13 +70,21 @@ class TasksController extends Controller
         ]);
         
         // タスクを作成
-        $task = new Task;
-        $task->status = $request->status;
-        $task->content = $request->content;
-        $task->save();
+        //$task = new Task;
+        //$task->status = $request->status;
+        //$task->content = $request->content;
+        //$task->save();
+        // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
+        // 認証済みユーザを取得　$user = \Auth::user();
+        $request->user()->tasks()->create([
+            'status' => $request->status,
+            'content' => $request->content,
+        ]);
 
         // トップページへリダイレクトさせる
-        return redirect('/');
+        //return redirect();
+        // 前のURLにリダイレクト
+        return back();
     }
 
     /**
@@ -153,9 +162,17 @@ class TasksController extends Controller
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
         // タスクを削除
-        $task->delete();
+        //$task->delete();
+        // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は投稿を削除
+        if (\Auth::id() === $task->user_id){
+            $task->delete();
+            //削除後はindexへリダイレクト
+            return redirect()->route('tasks.index')->with('success','Delete Successful');
+        }
 
         // トップページへリダイレクトさせる
-        return redirect('/');
+        //return redirect('/');
+        // 前のURLにリダイレクト
+        return back()->with('Delete Failed');
     }
 }
