@@ -7,7 +7,7 @@
     </div>
 
     @if (isset($tasks))
-        <table class="table table-zebra w-full my-4">
+        <table class="table table-zebra w-full my-4 ml-4">
             <thead>
                 <tr>
                     <th>id</th>
@@ -26,7 +26,9 @@
             </tbody>
         </table>
     {{-- タスク作成ページへのリンク --}}
-    <a class="btn btn-primary" href="{{ route('tasks.create') }}">新規タスクの投稿</a>
+    <div class=ml-4>
+        <a class="btn btn-primary" href="{{ route('tasks.create') }}">新規タスクの投稿</a>
+    </div>
     @endif
     
 @endsection

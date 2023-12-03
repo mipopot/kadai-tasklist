@@ -1,6 +1,6 @@
 @if (Auth::check())
     {{-- タスクリストページへのリンク --}}
-    <li><a class="link link-hover" href="{{ route('tasks.index') }}">Task</a></li>
+    <li><a class="link link-hover" href="{{ route('tasks.index') }}">{{ Auth::user()->name }}&#39;s Task</a></li>
     <li class="divider lg:hidden"></li>
     {{-- ログアウトへのリンク --}}
     <li><a class="link link-hover" href="#" onclick="event.preventDefault();this.closest('form').submit();">Logout</a></li>

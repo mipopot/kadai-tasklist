@@ -22,11 +22,13 @@
     </table>
 
     {{-- タスク編集ページへのリンク --}}
-    <a class="btn btn-outline" href="{{ route('tasks.edit', $task->id) }}">このタスクを編集</a>
+    <div class=ml-4>
+        <a class="btn btn-outline" href="{{ route('tasks.edit', $task->id) }}">このタスクを編集</a>
+    </div>
     
     @if (Auth::id() == $task->user_id)
         {{-- タスク削除フォーム --}}
-        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" class="my-2">
+        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" class="my-2 ml-4">
             @csrf
             @method('DELETE')
             

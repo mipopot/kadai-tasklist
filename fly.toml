@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "kadai-task-list-2"
+app = "kadai-task-list"
 primary_region = "nrt"
 console_command = "php /var/www/html/artisan tinker"
 
@@ -19,11 +19,11 @@ console_command = "php /var/www/html/artisan tinker"
   LOG_STDERR_FORMATTER = "Monolog\\Formatter\\JsonFormatter"
   SESSION_DRIVER = "cookie"
   SESSION_SECURE_COOKIE = "true"
-  APP_URL = "https://kadai-task-list-2.fly.dev"
-  APP_NAME = "Laravel"
+  APP_URL = "https://kadai-task-list.fly.dev"
+  APP_NAME = "Tasklist"
   APP_DEBUG = false
   DB_CONNECTION = "pgsql"
-  DB_HOST = "db.fyczcifdwlaxcxwcmzro.supabase.co"
+  DB_HOST = "db.mppumqqkgughulizobxb.supabase.co"
   DB_PORT = 5432
   DB_DATABASE = "postgres"
   DB_USERNAME = "postgres"
