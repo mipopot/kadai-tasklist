@@ -98,11 +98,12 @@ class TasksController extends Controller
     {
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
-
-        // タスク詳細ビューでそれを表示
-        return view('tasks.show', [
-            'task' => $task,
-        ]);
+        if (\Auth::id() === $task->user_id){
+            // タスク詳細ビューでそれを表示
+            return view('tasks.show', ['task' => $task,]);
+        }
+        // トップページへリダイレクトさせる
+        return redirect('/');
     }
 
     /**
@@ -116,11 +117,13 @@ class TasksController extends Controller
     {
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
-
-        // タスク編集ビューでそれを表示
-        return view('tasks.edit', [
-            'task' => $task,
-        ]);
+        if (\Auth::id() === $task->user_id){
+            // タスク編集ビューでそれを表示
+            return view('tasks.edit', ['task' => $task,]);
+        }
+        
+        // トップページへリダイレクトさせる
+        return redirect('/');
     } 
 
     /**
@@ -141,11 +144,16 @@ class TasksController extends Controller
         
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
-        // タスクを更新
-        $task->status = $request->status;
-        $task->content = $request->content;
-        $task->save();
+        if (\Auth::id() === $task->user_id){
+            // タスクを更新
+            $task->status = $request->status;
+            $task->content = $request->content;
+            $task->save();
 
+            // トップページへリダイレクトさせる
+            return redirect('/');
+        }
+        
         // トップページへリダイレクトさせる
         return redirect('/');
     }
@@ -162,12 +170,10 @@ class TasksController extends Controller
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
         // もしuser_idが一致するユーザの場合指定されたidの$taskデータを削除する
-        if (\Auth::check() && \Auth::id() === $task->user_id){
-            // ログを出力して削除が実行されることを確認
-            \Log::info('Delete task: ' . $task->id);
+        if (\Auth::id() === $task->user_id){
             // タスクを削除
             $task->delete();
-            // 削除後はindexページへリダイレクト
+            // 削除後は前のページへリダイレクト
             return redirect()->route('tasks.index');
             // テスト用：削除後はdestroyページを表示
             //return view('tasks.destroy');

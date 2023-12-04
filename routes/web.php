@@ -33,7 +33,6 @@ Route::middleware('auth')->group(function () {
     //Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //Route::get('/', [tasksController::class, 'index']);
     Route::resource('tasks', TasksController::class);
-    Route::resource('task', TasksController::class);
 });
 
 require __DIR__.'/auth.php';
