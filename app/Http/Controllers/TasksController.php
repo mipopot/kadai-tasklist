@@ -167,15 +167,15 @@ class TasksController extends Controller
             \Log::info('Delete task: ' . $task->id);
             // タスクを削除
             $task->delete();
-            //削除後は前のページへリダイレクト
-            return view('tasks.destroy');
-            //return back()->with('success','Delete Successful');
+            // 削除後はindexページへリダイレクト
+            return redirect()->route('tasks.index');
+            // テスト用：削除後はdestroyページを表示
+            //return view('tasks.destroy');
         }
 
         // 認証済みユーザではない場合はトップページへリダイレクトさせる
-        return view('tasks.error');
-        //return redirect('/');
-        // 認証済みユーザではない場合は前のURLにリダイレクト
-        //return back()->with('Delete Failed');
+        return redirect('/');
+        // テスト用：削除後はdestroyページを表示
+        //return view('tasks.error');
     }
 }
